@@ -19,6 +19,12 @@ server {
         auth_basic "Restricted Access";
         auth_basic_user_file /etc/nginx/.htpasswd;
         include /etc/nginx/git.conf;
+        fastcgi_pass  unix:run/fcgiwrap.socket;
+        include       fastcgi_params;
+        fastcgi_param SCRIPT_FILENAME /usr/lib/git-core/git-http-backend;
+        fastcgi_param PATH_INFO       $uri;
+        fastcgi_param GIT_PROJECT_ROOT /home/testuser/git;
+        fastcgi_param GIT_HTTP_EXPORT_ALL "";
     }
 
     location / {
