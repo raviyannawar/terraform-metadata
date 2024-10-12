@@ -11,8 +11,8 @@ server {
     listen 443 ssl;
     server_name ##server-name;
 
-    ssl_certificate /etc/nginx/ssl/##server-name.crt;
-    ssl_certificate_key /etc/nginx/ssl/##server-name.key;
+    ssl_certificate /etc/nginx/ssl/nginx-selfsigned.crt;
+    ssl_certificate_key /etc/nginx/ssl/nginx-selfsigned.key;
 
     location /git/ {
         alias /srv/git/;
